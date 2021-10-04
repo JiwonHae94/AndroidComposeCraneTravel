@@ -1,5 +1,9 @@
 package com.config.practice_crane.buildsrc
 
+/**
+ * Dependency for Build
+ * using kotlin DSL
+ */
 
 object Versions {
     const val ktLint = "0.42.1"
