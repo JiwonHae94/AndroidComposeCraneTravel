@@ -24,4 +24,5 @@
     <string name="click_label_select">select</string>
     <string name="state_descr_selected">Selected</string>
     <string name="state_descr_not_selected">Not selected</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 </resources>
