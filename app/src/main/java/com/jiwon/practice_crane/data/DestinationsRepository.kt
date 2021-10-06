@@ -2,7 +2,7 @@ package com.jiwon.practice_crane.data
 
 import javax.inject.Inject
 
-class DestinatoinsRepository @Inject constructor(
+class DestinationsRepository @Inject constructor(
     private val destinationsLocalDataSource: DestinationsLocalDataSource
 ) {
     val destinations: List<ExploreModel> = destinationsLocalDataSource.craneDestinations
