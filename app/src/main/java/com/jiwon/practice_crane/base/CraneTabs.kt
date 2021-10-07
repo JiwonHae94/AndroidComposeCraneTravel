@@ -23,9 +23,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.ConfigurationCompat
 import com.jiwon.practice_crane.R
+import com.jiwon.practice_crane.home.CraneScreen
 
 @Composable
-fun CraneTabs(
+fun CraneTabBar(
     modifier:Modifier = Modifier,
     onMenuClicked : () -> Unit,
     children : @Composable (Modifier) -> Unit

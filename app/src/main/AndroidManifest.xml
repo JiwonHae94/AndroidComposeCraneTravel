@@ -11,32 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice_crane">
-        <activity
-            android:name=".details.DetailsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_details"
-            android:theme="@style/Theme.Practice_crane.NoActionBar" />
-        <activity
-            android:name=".calendar.CalendarActivity"
-            android:exported="true"
-            android:label="@string/title_activity_calendar"
-            android:theme="@style/Theme.Practice_crane.NoActionBar" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${googleMapsKey}" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="${googleMapsKey}"/>
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Practice_crane.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".details.DetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".calendar.CalendarActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

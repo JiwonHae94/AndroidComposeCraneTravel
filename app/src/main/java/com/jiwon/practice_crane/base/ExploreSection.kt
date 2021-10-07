@@ -1,9 +1,34 @@
+/*
+ * Copyright 2020 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.jiwon.practice_crane.base
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -17,17 +42,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.ImagePainter
+import coil.compose.ImagePainter.State.Loading
 import coil.compose.rememberImagePainter
 import com.google.accompanist.insets.navigationBarsHeight
-
+import com.jiwon.practice_crane.R
+import com.jiwon.practice_crane.data.ExploreModel
+import com.jiwon.practice_crane.home.onExploreItemClicked
+import com.jiwon.practice_crane.ui.theme.BottomSheetShape
+import com.jiwon.practice_crane.ui.theme.crane_caption
+import com.jiwon.practice_crane.ui.theme.crane_divider_color
 
 @Composable
 fun ExploreSection(
     modifier: Modifier = Modifier,
     title: String,
     exploreList: List<ExploreModel>,
-    onItemClicked: OnExploreItemClicked
+    onItemClicked: onExploreItemClicked
 ) {
     Surface(modifier = modifier.fillMaxSize(), color = Color.White, shape = BottomSheetShape) {
         Column(modifier = Modifier.padding(start = 24.dp, top = 20.dp, end = 24.dp)) {
@@ -62,7 +92,7 @@ fun ExploreSection(
 private fun ExploreItem(
     modifier: Modifier = Modifier,
     item: ExploreModel,
-    onItemClicked: OnExploreItemClicked
+    onItemClicked: onExploreItemClicked
 ) {
     Row(
         modifier = modifier
@@ -84,7 +114,7 @@ private fun ExploreItem(
                     modifier = Modifier.fillMaxSize(),
                 )
 
-                if (painter.state is ImagePainter.State.Loading) {
+                if (painter.state is Loading) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_crane_logo),
                         contentDescription = null,

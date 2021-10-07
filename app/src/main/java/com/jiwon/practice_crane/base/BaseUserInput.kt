@@ -14,25 +14,41 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.jiwon.practice_crane.ui.captionTextStyle
 
+@ExperimentalMaterialApi
 @Composable
-fun SinmpleUserInput(
-    text : String? = null,
-    caption : String? = null,
-    @DrawableRes vectorImageId : Int? = null
-){
-
+fun SimpleUserInput(
+    text: String? = null,
+    caption: String? = null,
+    @DrawableRes vectorImageId: Int? = null
+) {
+    CraneUserInput(
+        caption = if (text == null) caption else null,
+        text = text ?: "",
+        vectorImageId = vectorImageId
+    )
 }
 
+
+@ExperimentalMaterialApi
 @Composable
 fun CraneUserInput(
-    text : String,
+    text: String,
     modifier: Modifier = Modifier,
-    onClick : () -> Unit = {},
-    caption : String? = null,
-    @DrawableRes vectorImageId : Int? = null,
-    tint : Color = LocalContentColor.current
-){
-
+    onClick: () -> Unit = { },
+    caption: String? = null,
+    @DrawableRes vectorImageId: Int? = null,
+    tint: Color = LocalContentColor.current
+) {
+    CraneBaseUserInput(
+        modifier = modifier,
+        onClick = onClick,
+        caption = caption,
+        vectorImageId = vectorImageId,
+        tintIcon = { text.isNotEmpty() },
+        tint = tint
+    ) {
+        Text(text = text, style = MaterialTheme.typography.body1.copy(color = tint))
+    }
 }
 
 @ExperimentalMaterialApi
@@ -46,7 +62,7 @@ fun CraneEditableUserInput(
     var textFieldState by remember { mutableStateOf(TextFieldValue(text = hint)) }
     val isHint = {textFieldState.text == hint }
 
-    CraneBaseInput(
+    CraneBaseUserInput(
         caption = caption,
         tintIcon = { !isHint() },
         showCaption = { !isHint() },
@@ -70,7 +86,7 @@ fun CraneEditableUserInput(
 
 @ExperimentalMaterialApi
 @Composable
-fun CraneBaseInput(
+fun CraneBaseUserInput(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     caption:String ? = null,

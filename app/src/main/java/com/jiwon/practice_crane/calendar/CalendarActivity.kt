@@ -29,8 +29,9 @@ import com.jiwon.practice_crane.R
 import com.jiwon.practice_crane.calendar.model.DaySelected
 
 
-@ExperimentalMaterialApi
-fun lanchCalendarActivity(context: Context){
+
+@OptIn(ExperimentalMaterialApi::class)
+fun launchCalendarActivity(context: Context) {
     val intent = Intent(context, CalendarActivity::class.java)
     context.startActivity(intent)
 }
